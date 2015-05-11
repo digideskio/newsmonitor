@@ -1,36 +1,25 @@
-# coding: utf-8
-lib = File.expand_path('../lib', __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'news_monitor/version'
+require './lib/news_monitor/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "newsmonitor"
+  spec.name          = 'newsmonitor'
   spec.version       = NewsMonitor::VERSION
-  spec.authors       = ["Rainer Borene"]
-  spec.email         = ["rainerborene@gmail.com"]
+  spec.authors       = ['Rainer Borene']
+  spec.email         = ['rainerborene@gmail.com']
 
   spec.summary       = %q{NewsMonitor API wrapper}
-  spec.description   = %q{NewsMonitor API wrapper}
-  spec.homepage      = "https://github.com/rainerborene/newsmonitor"
-  spec.license       = "MIT"
+  spec.description   = spec.summary
+  spec.homepage      = 'https://github.com/rainerborene/newsmonitor'
+  spec.license       = 'MIT'
 
-  # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
-  # delete this section to allow pushing this gem to any host.
-  if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com'"
-  else
-    raise "RubyGems 2.0 or newer is required to protect against public gem pushes."
-  end
-
-  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
-  spec.bindir        = "exe"
+  spec.files         = `git ls-files -z`.split('\x0').reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
-  spec.require_paths = ["lib"]
+  spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
+  spec.require_paths = ['lib']
 
-  spec.add_runtime_dependency "httparty", "~> 0.13"
-  spec.add_runtime_dependency "nibbler",  "~> 1.3"
+  spec.add_dependency 'httparty'
+  spec.add_dependency 'nibbler'
 
-  spec.add_development_dependency "bundler", "~> 1.9"
-  spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "pry", "~> 10.0"
+  spec.add_development_dependency 'bundler'
+  spec.add_development_dependency 'rake'
+  spec.add_development_dependency 'pry'
 end
