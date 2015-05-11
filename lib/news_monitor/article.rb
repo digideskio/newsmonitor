@@ -1,12 +1,12 @@
 module NewsMonitor
   class Article < NibblerJSON
     element :id
-    element :created_at, with: -> (datetime) { Time.parse datetime }
+    element :created_at, with: -> (time) { Time.parse time }
     element :type
     element :title
     element :language_code
     element :url
-    element :published_at, with: -> (datetime) { Time.parse datetime }
+    element :published_at, with: -> (time) { Time.parse time }
     element :directories
 
     element '.social_metrics.facebook_likes' => :facebook_likes

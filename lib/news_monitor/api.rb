@@ -17,10 +17,24 @@ module NewsMonitor
     def search(query, options={})
       conditions = URI.encode(query)
       options.merge! basic_auth: @auth, query: { with_info: true, cluster_size: 1 }
-      parsed_response = self.class.get("/search/#{conditions}", options).parsed_response
-      parsed_response['results'].map! do |cluster|
+      response = get "/search/#{conditions}", options
+      response['results'].map! do |cluster|
         Cluster.parse(cluster)
       end
+    end
+
+    def find_article(article_id, options={})
+      response = get "/article/#{article_id}", options
+    end
+
+    def find_cluster(cluster_id, options={})
+      response = get "/cluster/#{cluster_id}", options
+    end
+
+    private
+
+    def get(path, options)
+      self.class.get(path, options).parsed_response
     end
   end
 end

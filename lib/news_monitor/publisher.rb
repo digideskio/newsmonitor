@@ -3,7 +3,7 @@ module NewsMonitor
     element :id
     element :permalink
     element :name
-    element :published_at, with: -> (datetime) { Time.parse datetime }
+    element :published_at, with: -> (time) { Time.parse time }
     element :thumbnail
     element :thumbnail_url
     element :url
