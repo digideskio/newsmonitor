@@ -22,7 +22,11 @@ describe NewsMonitor::API do
 
   describe '#search' do
     it 'fetch clusters of articles given the query' do
-
+      api = described_class.new
+      results = api.search "lavagem"
+      results.size.must_equal 50
+      results.must_be_instance_of Array
+      results.map(&:class).uniq.must_equal [NewsMonitor::Cluster]
     end
   end
 
