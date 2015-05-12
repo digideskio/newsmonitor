@@ -8,6 +8,7 @@ module NewsMonitor
     element :url
     element :published_at, with: -> (time) { Time.parse time }
     element :directories
+    element :content
 
     element '.social_metrics.facebook_likes' => :facebook_likes
     element '.social_metrics.facebook_shares' => :facebook_shares

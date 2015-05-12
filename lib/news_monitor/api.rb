@@ -24,11 +24,15 @@ module NewsMonitor
     end
 
     def find_article(article_id, options={})
+      options.merge! basic_auth: @auth
       response = get "/article/#{article_id}", options
+      Article.parse(response)
     end
 
     def find_cluster(cluster_id, options={})
+      options.merge! basic_auth: @auth, query: { with_info: true }
       response = get "/cluster/#{cluster_id}", options
+      Cluster.parse response['results'].first
     end
 
     private
