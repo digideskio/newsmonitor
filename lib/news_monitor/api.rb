@@ -16,7 +16,7 @@ module NewsMonitor
 
     def search(query, options={})
       conditions = URI.encode(query)
-      options.merge! basic_auth: @auth, query: { with_info: true, cluster_size: 1 }
+      options.merge! basic_auth: @auth
       response = get "/search/#{conditions}", options
       response['results'].map! do |cluster|
         Cluster.parse(cluster)
@@ -30,7 +30,7 @@ module NewsMonitor
     end
 
     def find_cluster(cluster_id, options={})
-      options.merge! basic_auth: @auth, query: { with_info: true }
+      options.merge! basic_auth: @auth
       response = get "/cluster/#{cluster_id}", options
       Cluster.parse response['results'].first
     end
