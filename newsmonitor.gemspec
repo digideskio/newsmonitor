@@ -5,14 +5,13 @@ Gem::Specification.new do |spec|
   spec.version       = NewsMonitor::VERSION
   spec.authors       = ['Rainer Borene']
   spec.email         = ['rainerborene@gmail.com']
-
   spec.summary       = %q{NewsMonitor API wrapper}
   spec.description   = spec.summary
   spec.homepage      = 'https://github.com/rainerborene/newsmonitor'
   spec.license       = 'MIT'
 
-  spec.files         = `git ls-files -z`.split('\x0').reject { |f| f.match(%r{^(test|spec|features)/}) }
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  spec.files         = `git ls-files -z`.split("\x0")
+  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ['lib']
 
