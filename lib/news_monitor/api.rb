@@ -1,4 +1,4 @@
-require 'uri'
+require 'erb'
 require 'httparty'
 require 'nibbler/json'
 
@@ -15,7 +15,7 @@ module NewsMonitor
     end
 
     def search(query, options={})
-      conditions = URI.encode(query)
+      conditions = ERB::Util.url_encode(query)
       options.merge! basic_auth: @auth
       response = get "/search/#{conditions}", options
       response['results'].map! do |cluster|
