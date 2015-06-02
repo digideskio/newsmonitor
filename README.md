@@ -1,5 +1,9 @@
 # NewsMonitor
 
+[![Build Status](https://travis-ci.org/rainerborene/newsmonitor.svg)](https://travis-ci.org/rainerborene/newsmonitor)
+[![Code Climate](https://codeclimate.com/github/rainerborene/newsmonitor/badges/gpa.svg)](https://codeclimate.com/github/rainerborene/newsmonitor)
+[![Test Coverage](https://codeclimate.com/github/rainerborene/newsmonitor/badges/coverage.svg)](https://codeclimate.com/github/rainerborene/newsmonitor/coverage)
+
 NewsMonitor API wrapper.
 
 ## Installation
@@ -20,11 +24,23 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+# Create the API object
+api = NewsMonitor::API.new username: 'jonhdoe', password: 'pwd'
+
+# Search similar articles grouped by cluster
+clusters = api.search("lavagem")
+
+# Find article by id
+api.find_article(72109310)
+
+# Find cluster by id
+api.find_cluster(7173190)
+```
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/newsmonitor/fork )
+1. Fork it ( https://github.com/rainerborene/newsmonitor/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
