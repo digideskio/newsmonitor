@@ -11,7 +11,7 @@ NewsMonitor API wrapper.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'newsmonitor', require: 'news_monitor'
+gem 'newsmonitor'
 ```
 
 And then execute:
